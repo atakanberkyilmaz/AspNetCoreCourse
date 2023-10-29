@@ -18,7 +18,7 @@ namespace MyAspNetCoreApp.Web.Controllers
                 new(){Id=2, Name = "Defter"},
                 new(){Id=3, Name = "Silgi"},
             };
-
+ 
             //ViewData ve ViewBag controller ve view arasındaki verilere erişmek için kullanılır
             //TempData bir requestten diğer bir requeste veri yollamak için kullanılır, diğerlerinden ayrılan özelliği .net sessionu kullanmasıdır
             //ViewBag.name = "ahmet";
