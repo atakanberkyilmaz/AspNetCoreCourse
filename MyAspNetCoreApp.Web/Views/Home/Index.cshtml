@@ -2,14 +2,48 @@
     ViewData["Title"] = "Home Page";
 
     var alert = "bu bir uyarı mesajıdır"; //uyarı koymak için kullanılabilir
+} 
+@section Css 
+{
+    <link rel="stylesheet" href="~/css/example.css" asp-append-version="true" />
+
+
+
+
+    <style>
+        h1
+        {
+            color:red;
+            background-color:blue;
+
+        }
+    </style>
+
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
 
-<div>Günün Tarihi: @DateTime.Now.ToShortDateString()</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+    // alert("sayfamıza hoşgeldin.") 
+        $(document).ready(function () {
+
+            console.log("Sayfamıza hoşgeldin")
+        })
+    </script>
+}
+
+<h1>Merhaba Dünya</h1>
+<hr />
+<h2>Merhaba Asp.Net</h2>
+
+
+@* <partial name="_MenuPartialView"></partial>
+@await Html.PartialAsync("_MenuPartialView")  *@
+
+
+@* <div>Günün Tarihi: @DateTime.Now.ToShortDateString()</div>
 @{
     var datetime = DateTime.Now.ToShortDateString();
     var message = "merhaba";
@@ -19,7 +53,7 @@
     <text>Bugunün tarihi: @datetime </text>
 }
 @*Razor Syntax*@
-@if (1==1)
+@* @if (1==1)
 {
     <p>doğru</p>
 }
@@ -40,4 +74,4 @@ else
 @foreach(var item in Enumerable.Range(1, 10).ToList())
 {
     <p>@item</p>
-}
+} *@ 
