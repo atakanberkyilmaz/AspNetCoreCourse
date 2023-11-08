@@ -3,21 +3,21 @@
 namespace MyAspNetCoreApp.Web.Controllers
 { 
 
-    public class Product
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-    }
+    //public class Product
+    //{
+    //    public int Id { get; set; }
+    //    public string Name { get; set; }
+    //}
     public class OrnekController1 : Controller
     {
         public IActionResult Index()
         {
-            var productList = new List<Product>()
-            {
-                new(){Id=1, Name = "Kalem"},
-                new(){Id=2, Name = "Defter"},
-                new(){Id=3, Name = "Silgi"},
-            };
+            //var productList = new List<Product>()
+            //{
+            //    new(){Id=1, Name = "Kalem"},
+            //    new(){Id=2, Name = "Defter"},
+            //    new(){Id=3, Name = "Silgi"},
+            //};
  
             //ViewData ve ViewBag controller ve view arasındaki verilere erişmek için kullanılır
             //TempData bir requestten diğer bir requeste veri yollamak için kullanılır, diğerlerinden ayrılan özelliği .net sessionu kullanmasıdır
@@ -32,7 +32,7 @@ namespace MyAspNetCoreApp.Web.Controllers
 
             //ViewBag.person = new { Id = 1, Name = "ahmet", Age = 23 };
             //ViewBag.name = new List<string>() { "ata", "berk", "yılmaz"};
-            return View(productList);
+            return View(); //productlist
         }
 
         public IActionResult Index2()
