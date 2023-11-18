@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyAspNetCoreApp.Web.Helper;
 using MyAspNetCoreApp.Web.Models;
 using System.Diagnostics;
 
@@ -6,11 +7,14 @@ namespace MyAspNetCoreApp.Web.Controllers
 {
     public class HomeController : Controller
     {
+        Helper _helper;
+
         private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, Helper helper)
         {
             _logger = logger;
+            _helper = helper;
         }
 
         public IActionResult Index()

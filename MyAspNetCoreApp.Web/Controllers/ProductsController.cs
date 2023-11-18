@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MyAspNetCoreApp.Web.Helper;
 using MyAspNetCoreApp.Web.Models;
 
 namespace MyAspNetCoreApp.Web.Controllers
@@ -8,13 +9,16 @@ namespace MyAspNetCoreApp.Web.Controllers
     {
         private AppDbContext _context;
 
+        private IHelper _helper;
+
         private readonly ProductRepository _productRepository;
 
-        public ProductsController(AppDbContext context) 
+        public ProductsController(AppDbContext context, IHelper helper) 
         {
             //DI Container
             //Dependcy Injection Pattern
            _productRepository = new ProductRepository();
+            _helper = helper;
            _context = context;
 
             //if (!_context.Products.Any())
@@ -32,8 +36,13 @@ namespace MyAspNetCoreApp.Web.Controllers
             //    _productRepository.Add(new() { Id = 3, Name = "Kalem 3", Price = 300, Stock = 400 });
             //}
         }
-        public IActionResult Index()
+        public IActionResult Index([FromServices]IHelper helper2, int id)
         {
+            var text = "Asp.Net";
+            var upperText = _helper.Upper(text);
+
+            var status = _helper.Equals(helper2);
+
             var products = _context.Products.ToList();
 
             return View(products);
