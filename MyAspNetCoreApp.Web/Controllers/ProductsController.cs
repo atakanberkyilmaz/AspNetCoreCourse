@@ -55,26 +55,51 @@ namespace MyAspNetCoreApp.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult SaveProduct() 
+        public IActionResult Add(Product newProduct)
+            //public IActionResult Add(string Name, decimal Price, int Stock, string Color)
         {
+            //Request Header-Body
+
             //1. Yöntem
 
-            var name = HttpContext.Request.Form["Name"].ToString();
-            var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
-            var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());
-            var color = HttpContext.Request.Form["Color"].ToString();
+            //var name = HttpContext.Request.Form["Name"].ToString();
+            //var price = decimal.Parse(HttpContext.Request.Form["Price"].ToString());
+            //var stock = int.Parse(HttpContext.Request.Form["Stock"].ToString());
+            //var color = HttpContext.Request.Form["Color"].ToString();
 
-            Product newProduct = new Product() { Name = name, Price=price, Color = color, Stock = stock };
+            //2.Yöntem
+            //Product newProduct = new Product() { Name = Name, Price = Price, Color = Color, Stock = Stock };
+
 
             _context.Products.Add(newProduct); 
             _context.SaveChanges();
 
+            TempData["status"] = "Ürün başarıyla eklendi.";
             return RedirectToAction("Index");
+            //return View();
+            
         }
-
+        [HttpGet]
         public IActionResult Update(int id) 
         {
-            return View();
+            var product = _context.Products.Find(id);
+
+            return View(product);
         }
+
+        [HttpPost]
+
+        public IActionResult Update(Product updateProduct, int productId, string type) 
+        {
+            updateProduct.Id= productId;
+            _context.Products.Update(updateProduct);
+            _context.SaveChanges();
+
+            TempData["status"] = "Ürün Başarıyla güncellendi.";
+            return RedirectToAction("Index");
+
+        }
+
+       
     }
 }
